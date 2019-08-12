@@ -1,24 +1,19 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const client = new Discord.Client();
 
-var prefix = ("*")
+client.login(process.env.TOKEN);
 
-bot.on('ready', function() {
-    bot.user.setActivity("Command: *help");
-    console.log("Connected");
-});
+var prefix = ("vbi");
 
-bot.login(process.env.TOKEN);
+client.on("message", (message) -> {
 
+    if(message.content === "bonjour") {
+        message.channel.send("Salutation!")
+    }
 
-bot.on('message', message => {
     if(message.content === prefix + "help"){
-        message.channel.send("Listes des commandes: \n -*help");
+        message.channel.Send("Veux-tu de l'aide?")
     }
 
-    if (message.content === "Salut"){
-        message.reply("Bien le bonjour. :)");
-        console.log("Commande Salut effectué");
-    }
 
 });
